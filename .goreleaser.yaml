@@ -14,9 +14,9 @@ builds:
       - linux
       - windows
       - darwin
-dockers:
-  - image_templates:
-    - user/repo
+#dockers:
+#  - image_templates:
+#    - user/repo
 archives:
   - replacements:
       darwin: Darwin
