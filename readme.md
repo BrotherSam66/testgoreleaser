@@ -55,10 +55,11 @@
 
          ```
             
-3.   ## 编译 
-        goreleaser release --snapshot --rm-dist
-4.   ## 发布到 github
-5.   ## 发布到 gitlab  
+3.   ## 编译  测试构建
+         goreleaser --snapshot --skip-publish --rm-dist     
+         goreleaser release --snapshot --rm-dist
+5.   ## 发布到 github
+6.   ## 发布到 gitlab  
 
 
 
