@@ -1,5 +1,7 @@
 # GoReleaser 工作笔记
 
+http://www.idmiss.com/701
+
 1.   ##  GoReleaser 介绍
 
         goreleaser  方便的go 二进制包分发工具。可以帮助我们进行go 二进制包的快速，简单分发，我们可以用来创建一个github release 以及发布到homwbrew formula 。
@@ -18,9 +20,28 @@
         git push -u origin v1.0.0
      2. ### 添加goreleaser 支持 创建 .goreleaser.yaml
         goreleaser init
-     3. ### 测试构建
+     3. ###  测试 .goreleaser.yaml
+        goreleaser check
+     4. ###  本地测试构建
         goreleaser --snapshot --skip-publish --rm-dist
-     4. ### 效果
+     5. ###  准备发布，设置 ENV github token 
+        export GITHUB_TOKEN="？？？？YOUR_GH_TOKEN"
+     7. ###  创建 tag 推送 github
+         git tag -a v0.1.0 -m "First release"
+         git push origin v0.1.0      
+3.   ## 编译  测试构建
+         goreleaser --snapshot --skip-publish --rm-dist     
+         goreleaser release --snapshot --rm-dist
+4.   ## 发布到 github
+      export GITHUB_TOKEN="YOUR_GH_TOKEN"
+      or
+      export GITLAB_TOKEN="YOUR_GL_TOKEN"
+      git tag -a v0.0.1 -m "打包v0.1.2"
+      git push origin v0.1.2
+      goreleaser release --rm-dist  
+5.   ## 发布到 gitlab  
+
+     5. ### 效果
          ```
          before:
          hooks:
@@ -54,13 +75,7 @@
                - '^test:'
 
          ```
-            
-3.   ## 编译  测试构建
-         goreleaser --snapshot --skip-publish --rm-dist     
-         goreleaser release --snapshot --rm-dist
-5.   ## 发布到 github
-6.   ## 发布到 gitlab  
-
+      
 
 
 安装
