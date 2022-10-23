@@ -1,3 +1,3 @@
 FROM scratch
-ENTRYPOINT ["/mybin"]
-COPY mybin /
+COPY go-fileserver /app
+ENTRYPOINT ["/app"]
