@@ -1,4 +1,4 @@
 FROM scratch
 # FROM alpine
-COPY mybin /app
+COPY zexample /app
 ENTRYPOINT ["/app"]

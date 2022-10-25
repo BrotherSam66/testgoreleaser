@@ -1,3 +1,4 @@
+project_name: zexample
 before:
   hooks:
     - go mod tidy
@@ -7,7 +8,7 @@ env:
   - CGO_ENABLED=0
 
 builds:
-  - binary: addlicense
+  - binary: zexample
     goos:
       - linux
       - windows
@@ -16,58 +17,23 @@ builds:
       - amd64
       - arm64
 dockers:
-  - image_templates:
-      - '{{ .Env.REGISTRY }}/{{ .Env.IMAGE_NAME }}:{{ .Tag }}-amd64'
-    dockerfile: Dockerfile.goreleaser
-    use: buildx
-    build_flag_templates:
-      - "--pull"
-      - "--label=org.opencontainers.image.created={{.Date}}"
-      - "--label=org.opencontainers.image.name={{.ProjectName}}"
-      - "--label=org.opencontainers.image.revision={{.FullCommit}}"
-      - "--label=org.opencontainers.image.version={{.Version}}"
-      - "--label=org.opencontainers.image.source={{.GitURL}}"
-      - "--platform=linux/amd64"
-  - image_templates:
-      - '{{ .Env.REGISTRY }}/{{ .Env.IMAGE_NAME }}:{{ .Tag }}-arm64'
-    dockerfile: Dockerfile.goreleaser
-    use: buildx
-    build_flag_templates:
-      - "--pull"
-      - "--label=org.opencontainers.image.created={{.Date}}"
-      - "--label=org.opencontainers.image.name={{.ProjectName}}"
-      - "--label=org.opencontainers.image.revision={{.FullCommit}}"
-      - "--label=org.opencontainers.image.version={{.Version}}"
-      - "--label=org.opencontainers.image.source={{.GitURL}}"
-      - "--platform=linux/arm64"
-    goarch: arm64
-docker_manifests:
-  - name_template: '{{ .Env.REGISTRY }}/{{ .Env.IMAGE_NAME }}::{{ .Tag }}'
-    image_templates:
-      - '{{ .Env.REGISTRY }}/{{ .Env.IMAGE_NAME }}:{{ .Tag }}-amd64'
-      - '{{ .Env.REGISTRY }}/{{ .Env.IMAGE_NAME }}:{{ .Tag }}-arm64'
-  - name_template: 'ghcr.io/google/addlicense:latest'
-    image_templates:
-      - '{{ .Env.REGISTRY }}/{{ .Env.IMAGE_NAME }}:{{ .Tag }}-amd64'
-      - '{{ .Env.REGISTRY }}/{{ .Env.IMAGE_NAME }}:{{ .Tag }}-arm64'
-archives:
-  - format_overrides:
-    - goos: windows
-      format: zip
-    replacements:
-      darwin: macOS
-      linux: Linux
-      windows: Windows
-      386: i386
-      amd64: x86_64
-    # files:
-    # - LICENSE
-checksum:
-  name_template: 'checksums.txt'
-snapshot:
-  name_template: "{{ incpatch .Tag }}-next"
-changelog:
-  filters:
-    exclude:
-      - '^docs:'
-      - '^test:'
+- image_templates: ["docker.io/brothersam/zexample:{{ .Version }}"]
+  dockerfile: Dockerfile
+  build_flag_templates:
+  - --label=org.opencontainers.image.title={{ .ProjectName }}
+  - --label=org.opencontainers.image.description={{ .ProjectName }}
+  - --label=org.opencontainers.image.url=https://github.com/brothersam66/zexample
+  - --label=org.opencontainers.image.source=https://github.com/brothersam66/zexample
+  - --label=org.opencontainers.image.version={{ .Version }}
+  - --label=org.opencontainers.image.created={{ time "2006-01-02T15:04:05Z07:00" }}
+  - --label=org.opencontainers.image.revision={{ .FullCommit }}
+  - --label=org.opencontainers.image.licenses=MIT
+nfpms:
+- maintainer: Carlos A Becker <root@carlosbecker.dev>
+  description: Sample project.
+  homepage: https://github.com/brothersam66/tasktimer
+  license: MIT
+  formats:
+  - deb
+  - rpm
+  - apk     
