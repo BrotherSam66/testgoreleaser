@@ -1,82 +1,73 @@
-# .goreleaser.yaml
 before:
   hooks:
-    # You may remove this if you don't use go modules.
     - go mod tidy
-    # you may remove this if you don't need go generate
-    - go generate ./...
-builds:
-- env:
+
+env:
+  - GO111MODULE=on
   - CGO_ENABLED=0
-  binary: mybin
-  goos:
-  - linux
-  - windows
-  - darwin
-  goarch:
-  - amd64
-  - arm64
+
+builds:
+  - binary: addlicense
+    goos:
+      - linux
+      - windows
+      - darwin
+    goarch:
+      - amd64
+      - arm64
 dockers:
-- image_templates:
-  - "brothersam/test02:tagtest02"
-  - "docker.io/brothersam/test02:tagtest01"
-  goos: linux
-  goarch: amd64
-  goarm: ''
-  goamd64: 'v1'
-  
-  use: docker
-  dockerfile: Dockerfile
-  build_flag_templates:
-  - "--pull"
-  - "--platform=linux/amd64"
-  skip_push: false
-  push_flags:
-    - --tls-verify=false
-#- image_templates:
-#  - "foo/{{.ProjectName}}:{{ .Version }}-arm64v8"
-#  use: docker
-#  goarch: arm64
-#  dockerfile: Dockerfile
-#  build_flag_templates:
-#  - "--platform=linux/arm64/v8"
-
-# docker_manifests:
-# - name_template: foo/bar:{{ .Version }}
-#   image_templates:
-#   - foo/bar:{{ .Version }}-amd64
-  # - foo/bar:{{ .Version }}-arm64v8
-# nfpms:
-#   # note that this is an array of nfpm configs
-#   -
-#     # ID of the nfpm config, must be unique.
-#     # Defaults to "default".
-#     # id: brothersam
-#     id: foo
-
-#     # Name of the package.
-#     # Defaults to `ProjectName`.
-#     package_name: foo
-#     replacements:
-#       amd64: 64-bit
-#       386: 32-bit
-#       darwin: macOS
-#       linux: Tux
-#     homepage: https://example.com/
-#     # Formats to be generated.
-#     formats:
-#       - apk
-#       - deb
-#       - rpm
-#       - termux.deb # Since GoReleaser v1.11.
-
-#     # Packages your package depends on. (overridable)
-#     dependencies:
-#       - git
-#       - zsh
-
-#     # Packages it provides. (overridable)
-#     # Since: v1.11.
-#     provides:
-#       - bar
-#     - maintainer: ''
+  - image_templates:
+      - '{{ .Env.REGISTRY }}/{{ .Env.IMAGE_NAME }}:{{ .Tag }}-amd64'
+    dockerfile: Dockerfile.goreleaser
+    use: buildx
+    build_flag_templates:
+      - "--pull"
+      - "--label=org.opencontainers.image.created={{.Date}}"
+      - "--label=org.opencontainers.image.name={{.ProjectName}}"
+      - "--label=org.opencontainers.image.revision={{.FullCommit}}"
+      - "--label=org.opencontainers.image.version={{.Version}}"
+      - "--label=org.opencontainers.image.source={{.GitURL}}"
+      - "--platform=linux/amd64"
+  - image_templates:
+      - '{{ .Env.REGISTRY }}/{{ .Env.IMAGE_NAME }}:{{ .Tag }}-arm64'
+    dockerfile: Dockerfile.goreleaser
+    use: buildx
+    build_flag_templates:
+      - "--pull"
+      - "--label=org.opencontainers.image.created={{.Date}}"
+      - "--label=org.opencontainers.image.name={{.ProjectName}}"
+      - "--label=org.opencontainers.image.revision={{.FullCommit}}"
+      - "--label=org.opencontainers.image.version={{.Version}}"
+      - "--label=org.opencontainers.image.source={{.GitURL}}"
+      - "--platform=linux/arm64"
+    goarch: arm64
+docker_manifests:
+  - name_template: '{{ .Env.REGISTRY }}/{{ .Env.IMAGE_NAME }}::{{ .Tag }}'
+    image_templates:
+      - '{{ .Env.REGISTRY }}/{{ .Env.IMAGE_NAME }}:{{ .Tag }}-amd64'
+      - '{{ .Env.REGISTRY }}/{{ .Env.IMAGE_NAME }}:{{ .Tag }}-arm64'
+  - name_template: 'ghcr.io/google/addlicense:latest'
+    image_templates:
+      - '{{ .Env.REGISTRY }}/{{ .Env.IMAGE_NAME }}:{{ .Tag }}-amd64'
+      - '{{ .Env.REGISTRY }}/{{ .Env.IMAGE_NAME }}:{{ .Tag }}-arm64'
+archives:
+  - format_overrides:
+    - goos: windows
+      format: zip
+    replacements:
+      darwin: macOS
+      linux: Linux
+      windows: Windows
+      386: i386
+      amd64: x86_64
+    files:
+    - LICENSE
+checksum:
+  name_template: 'checksums.txt'
+snapshot:
+  name_template: "{{ incpatch .Tag }}-next"
+changelog:
+  filters:
+    exclude:
+      - '^docs:'
+      - '^test:'
