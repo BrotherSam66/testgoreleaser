@@ -1,0 +1,77 @@
+# This is an example .goreleaser.yml file with some sensible defaults.
+# Make sure to check the documentation at https://goreleaser.com
+before:
+  hooks:
+    # You may remove this if you don't use go modules.
+    - go mod tidy
+    # you may remove this if you don't need go generate
+    - go generate ./...
+builds:
+  - env:
+      - CGO_ENABLED=0
+    binary: mybin
+    goos:
+      - linux
+      - windows
+      - darwin
+    goarch:
+      - amd64
+      - arm64
+dockers:
+  - image_templates:
+    - user/repo
+nfpms:
+  # note that this is an array of nfpm configs
+  -
+    # ID of the nfpm config, must be unique.
+    # Defaults to "default".
+    id: foo
+
+    # Name of the package.
+    # Defaults to `ProjectName`.
+    package_name: foo
+    replacements:
+      amd64: 64-bit
+      386: 32-bit
+      darwin: macOS
+      linux: Tux
+    homepage: https://example.com/
+    # Formats to be generated.
+    formats:
+      - apk
+      - deb
+      - rpm
+      - termux.deb # Since GoReleaser v1.11.
+
+    # Packages your package depends on. (overridable)
+    dependencies:
+      - git
+      - zsh
+
+    # Packages it provides. (overridable)
+    # Since: v1.11.
+    provides:
+      - bar
+
+
+archives:
+  - replacements:
+      darwin: Darwin
+      linux: Linux
+      windows: Windows
+      386: i386
+      amd64: x86_64
+checksum:
+  name_template: 'checksums.txt'
+snapshot:
+  name_template: "{{ incpatch .Version }}-next"
+changelog:
+  sort: asc
+  filters:
+    exclude:
+      - '^docs:'
+      - '^test:'
+
+# modelines, feel free to remove those if you don't want/use them:
+# yaml-language-server: $schema=https://goreleaser.com/static/schema.json
+# vim: set ts=2 sw=2 tw=0 fo=cnqoj

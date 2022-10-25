@@ -1,0 +1,29 @@
+# .goreleaser.yaml
+builds:
+- env:
+  - CGO_ENABLED=0
+  binary: mybin
+  goos:
+  - linux
+  goarch:
+  - amd64
+  - arm64
+dockers:
+- image_templates:
+  - "foo/bar:{{ .Version }}-amd64"
+  use: docker
+  dockerfile: Dockerfile
+  build_flag_templates:
+  - "--platform=linux/amd64"
+- image_templates:
+  - "foo/bar:{{ .Version }}-arm64v8"
+  use: docker
+  goarch: arm64
+  dockerfile: Dockerfile
+  build_flag_templates:
+  - "--platform=linux/arm64/v8"
+docker_manifests:
+- name_template: foo/bar:{{ .Version }}
+  image_templates:
+  - foo/bar:{{ .Version }}-amd64
+  - foo/bar:{{ .Version }}-arm64v8

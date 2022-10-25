@@ -19,7 +19,7 @@ builds:
 dockers:
 - image_templates:
   - "brothersam/test02:tagtest02"
-  - "docker.io/brothersam/test02:tagtest01"
+  - "docker.io/brothersam/test02:tagtest02"
   goos: linux
   goarch: amd64
   goarm: ''
@@ -28,7 +28,7 @@ dockers:
   use: docker
   dockerfile: Dockerfile
   build_flag_templates:
-  - "--pull"
+  # - "--pull"
   - "--platform=linux/amd64"
   skip_push: false
   push_flags:
