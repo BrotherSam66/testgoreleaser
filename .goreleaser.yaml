@@ -154,29 +154,28 @@ changelog:
   # This may result in an empty release notes on GitHub/GitLab/Gitea.
   skip: false 
 
-  # Changelog generation implementation to use.
-  #
-  # Valid options are:
-  # - `git`: uses `git log`;
-  # - `github`: uses the compare GitHub API, appending the author login to the changelog.
-  # - `gitlab`: uses the compare GitLab API, appending the author name and email to the changelog.
-  # - `github-native`: uses the GitHub release notes generation API, disables the groups feature.
-  #
-  # Defaults to `git`.
-  use: github
-
-  # # Sorts the changelog by the commit's messages.
-  # # Could either be asc, desc or empty
-  # # Default is empty
-  # sort: asc
-
-  # # Max commit hash length to use in the changelog.
+  # # Changelog generation implementation to use.
   # #
-  # # 0: use whatever the changelog implementation gives you
-  # # -1: remove the commit hash from the changelog
-  # # any other number: max length.
+  # # Valid options are:
+  # # - `git`: uses `git log`;
+  # # - `github`: uses the compare GitHub API, appending the author login to the changelog.
+  # # - `gitlab`: uses the compare GitLab API, appending the author name and email to the changelog.
+  # # - `github-native`: uses the GitHub release notes generation API, disables the groups feature.
   # #
-  # # Default: 0.
-  # # Since: v1.11.2
-  # # abbrev: -1
-  # abbrev: 0
+  # # Defaults to `git`.
+  # use: github
+
+  # Sorts the changelog by the commit's messages.
+  # Could either be asc, desc or empty
+  # Default is empty
+  sort: asc
+
+  # Max commit hash length to use in the changelog.
+  #
+  # 0: use whatever the changelog implementation gives you
+  # -1: remove the commit hash from the changelog
+  # any other number: max length.
+  #
+  # Default: 0.
+  # Since: v1.11.2
+  abbrev: -1
