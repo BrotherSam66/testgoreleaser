@@ -1,4 +1,4 @@
 FROM scratch
 # FROM alpine
-COPY zexample /app
+COPY guanceexample /app
 ENTRYPOINT ["/app"]

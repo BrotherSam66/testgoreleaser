@@ -20,7 +20,7 @@ builds:
       - arm64
 
 dockers:
-- image_templates: ["docker.io/brothersam/zexample:{{ .Version }}"]
+- image_templates: ["docker.io/brothersam/guanceexample:{{ .Version }}"]
   dockerfile: Dockerfile
   goarch: amd64
   build_flag_templates:
@@ -34,7 +34,7 @@ dockers:
   - --label=guance.image.revision={{ .FullCommit }}
   - --label=guance.image.licenses=MIT
 
-- image_templates: ["docker.io/brothersam/zexample:{{ .Version }}"]
+- image_templates: ["docker.io/brothersam/guanceexample:{{ .Version }}"]
   dockerfile: Dockerfile
   goarch: arm64
   build_flag_templates:
