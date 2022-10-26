@@ -17,8 +17,9 @@ builds:
       - amd64
       - arm64
 dockers:
-- image_templates: ["docker.io/brothersam/zexample.{{ .Runtime.Goos }}:{{ .Version }}"]
+- image_templates: ["docker.io/brothersam/zexample.{{ .Runtime.Goarch }}:{{ .Version }}"]
   dockerfile: Dockerfile
+  goarch: amd64
   build_flag_templates:
   - --label=guance.image.title={{ .ProjectName }}
   - --label=guance.image.description={{ .ProjectName }}
