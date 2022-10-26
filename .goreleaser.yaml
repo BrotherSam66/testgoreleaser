@@ -129,13 +129,13 @@ builds:
 dockers:
 - image_templates:
   - "brothersam/guanceexample:{{ .Version }}-amd64"
-  use: buildx
+  use: docker
   dockerfile: Dockerfile
   build_flag_templates:
   - "--platform=linux/amd64"
 - image_templates:
   - "brothersam/guanceexample:{{ .Version }}-arm64v8"
-  use: buildx
+  use: docker
   goarch: arm64
   dockerfile: Dockerfile
   build_flag_templates:
