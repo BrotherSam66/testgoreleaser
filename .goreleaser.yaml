@@ -126,19 +126,19 @@ dockers:
 #     - --label=org.opencontainers.image.revision={{ .FullCommit }}
 #     - --label=org.opencontainers.image.licenses=MIT
 
-docker_manifests:
-- 
-  id: myimg
-  name_template: brothersam/guanceexample:{{ .Version }}
-  image_templates:
-  - brothersam/guanceexample:{{ .Version }}-amd64
-  - brothersam/guanceexample:{{ .Version }}-arm64v8
-  create_flags:
-  - --insecure
-  push_flags:
-  - --insecure
-  skip_push: false
-  use: docker
+# docker_manifests:
+# - 
+#   id: myimg
+#   name_template: brothersam/guanceexample:{{ .Version }}
+#   image_templates:
+#   - brothersam/guanceexample:{{ .Version }}-amd64
+#   - brothersam/guanceexample:{{ .Version }}-arm64v8
+#   create_flags:
+#   - --insecure
+#   push_flags:
+#   - --insecure
+#   skip_push: false
+#   use: docker
 
 
 # # GoReleaser can be wired to nfpm to generate and publish .deb, .rpm and .apk packages.  
