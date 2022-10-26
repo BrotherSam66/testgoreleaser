@@ -4,7 +4,7 @@ git commit -m "testcommit"
 # master: your branch name 
 git push origin master
 # vXX.XX.XX: your version. your tag
-git tag -a v0.3.37 -m "test release"
+git tag -a v0.3.38 -m "test release"
 # release and push to github & docker.io
 goreleaser release  --rm-dist
 # only test realase

@@ -178,4 +178,4 @@ changelog:
   #
   # Default: 0.
   # Since: v1.11.2
-  abbrev: -1
+  abbrev: 0
