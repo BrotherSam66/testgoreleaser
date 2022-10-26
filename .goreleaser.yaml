@@ -18,11 +18,11 @@ builds:
       - arm64
 
 dockers:
-- image_templates: ["docker.io/brothersam/zexample.{{ .Runtime.Goarch }}:{{ .Version }}"]
+- image_templates: ["docker.io/brothersam/zexample.amd64:{{ .Version }}"]
   dockerfile: Dockerfile
+  goarch: amd64
   build_flag_templates:
-  - "--platform=linux/amd64"
-  build_flag_templates:
+  - --platform=linux/amd64
   - --label=guance.image.title={{ .ProjectName }}
   - --label=guance.image.description={{ .ProjectName }}
   - --label=guance.image.url=https://github.com/brothersam66/testgoreleaser
@@ -32,11 +32,11 @@ dockers:
   - --label=guance.image.revision={{ .FullCommit }}
   - --label=guance.image.licenses=MIT
 
-- image_templates: ["docker.io/brothersam/zexample.{{ .Runtime.Goarch }}:{{ .Version }}"]
+- image_templates: ["docker.io/brothersam/zexample.arm64:{{ .Version }}"]
   dockerfile: Dockerfile
+  goarch: arm64
   build_flag_templates:
-  - "--platform=linux/arm64/v8"
-  build_flag_templates:
+  - --platform=linux/arm64/v8
   - --label=guance.image.title={{ .ProjectName }}
   - --label=guance.image.description={{ .ProjectName }}
   - --label=guance.image.url=https://github.com/brothersam66/testgoreleaser
