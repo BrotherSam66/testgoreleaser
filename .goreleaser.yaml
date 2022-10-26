@@ -129,10 +129,10 @@ builds:
 docker_manifests:
 - 
   id: myimg
-  name_template: docker.io/brothersam/guanceexample:{{ .Version }}
+  name_template: docker.io/brothersam/guanceexample1:{{ .Version }}
   image_templates:
-  - docker.io/brothersam/guanceexample:{{ .Version }}-amd64
-  - docker.io/brothersam/guanceexample:{{ .Version }}-arm64v8
+  - docker.io/brothersam/guanceexample1:{{ .Version }}-amd64
+  - docker.io/brothersam/guanceexample1:{{ .Version }}-arm64v8
   create_flags:
   - --insecure
   push_flags:
