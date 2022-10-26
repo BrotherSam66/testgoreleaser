@@ -18,16 +18,17 @@ builds:
   #   id: "worker"
   #   binary: worker
 
-  # Path to main.go file or main package.
-  # Notice: when used with `gomod.proxy`, this must be a package.
-  # Default is `.`.
-  - main: .
+  - 
+    # Path to main.go file or main package.
+    # Notice: when used with `gomod.proxy`, this must be a package.
+    # Default is `.`.
+    main: .
 
-  # Binary name.
-  # Can be a path (e.g. `bin/app`) to wrap the binary in a directory.
-  # Default is the name of the project directory.
+    # Binary name.
+    # Can be a path (e.g. `bin/app`) to wrap the binary in a directory.
+    # Default is the name of the project directory.
     binary: guanceexample
-  
+
     # GOOS list to build for.
     # For more info refer to: https://golang.org/doc/install/source#environment
     # Defaults are darwin and linux.
@@ -43,19 +44,19 @@ builds:
       - amd64
       - arm64
 
-    # # GOARM to build for when GOARCH is arm.
-    # # For more info refer to: https://golang.org/doc/install/source#environment
-    # # Default is only 6.
-    # goarm:
-    #   - 6
-    #   # - 7
+    # GOARM to build for when GOARCH is arm.
+    # For more info refer to: https://golang.org/doc/install/source#environment
+    # Default is only 6.
+    goarm:
+      - 6
+      # - 7
 
-    # # GOAMD64 to build when GOARCH is amd64.
-    # # For more info refer to: https://golang.org/doc/install/source#environment
-    # # Default is only v1.
-    # goamd64:
-    #   - v2
-    #   - v3
+    # GOAMD64 to build when GOARCH is amd64.
+    # For more info refer to: https://golang.org/doc/install/source#environment
+    # Default is only v1.
+    goamd64:
+      - v2
+      - v3
 
 dockers:
   # You can declare multiple Docker images. 
@@ -65,7 +66,7 @@ dockers:
   # Templates of the Docker image names.
   # if prefix URL, docker img will push.
   - image_templates: 
-    - "docker.io/brothersam/guanceexample:{{ .Version }}"
+    - 'docker.io/brothersam/guanceexample:{{ .Version }}-amd64'
     # - "gcr.io/brothersam/guanceexample:{{ .Version }}"
     # - "brothersam/guanceexample:{{ .Version }}"
 
@@ -108,15 +109,15 @@ dockers:
     - --label=guance.image.licenses=MIT
 
   - image_templates: 
-    - "docker.io/brothersam/guanceexample:{{ .Version }}"
+    - 'docker.io/brothersam/guanceexample:{{ .Version }}-arm64v6' 
     # goos: linux
     goarch: arm64
-    # goarm: 'v6'
+    goarm: 'v6'
     skip_push: false
     dockerfile: Dockerfile
     use: docker
     build_flag_templates:
-    - --platform=linux/arm64/v8
+    - --platform=linux/arm64/v6
     - --label=guance.image.title={{ .ProjectName }}
     - --label=guance.image.description={{ .ProjectName }}
     - --label=guance.image.url=https://github.com/brothersam66/testgoreleaser
@@ -126,22 +127,22 @@ dockers:
     - --label=guance.image.revision={{ .FullCommit }}
     - --label=guance.image.licenses=MIT
 
-docker_manifests:
-- name_template: docker.io/brothersam/guanceexample:{{ .Version }}
-  image_templates:
-  - docker.io/brothersam/guanceexample:{{ .Version }}-amd64
-  - docker.io/brothersam/guanceexample:{{ .Version }}-arm64v8
+  docker_manifests:
+  - name_template: docker.io/brothersam/guanceexample:{{ .Version }}
+    image_templates:
+    - docker.io/brothersam/guanceexample:{{ .Version }}-amd64
+    - docker.io/brothersam/guanceexample:{{ .Version }}-arm64v8
 
-# GoReleaser can be wired to nfpm to generate and publish .deb, .rpm and .apk packages.  
-nfpms:
-- maintainer: Carlos A Becker <root@carlosbecker.dev>
-  description: Sample project.
-  homepage: https://github.com/brothersam66/tasktimer
-  license: MIT
-  formats:
-  - deb
-  - rpm
-  - apk     
+  # GoReleaser can be wired to nfpm to generate and publish .deb, .rpm and .apk packages.  
+  nfpms:
+  - maintainer: Carlos A Becker <root@carlosbecker.dev>
+    description: Sample project.
+    homepage: https://github.com/brothersam66/tasktimer
+    license: MIT
+    formats:
+    - deb
+    - rpm
+    - apk     
 
 
 env_files:
