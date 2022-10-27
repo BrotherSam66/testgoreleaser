@@ -145,35 +145,43 @@ env_files:
   # setup ENV github token: $ export GITHUB_TOKEN="YOUR_GH_TOKEN"
   github_token: ~/go/src/github.com/github_token
 
-# changelog:
-#   # Set this to true if you don't want any changelog at all.
-#   # Warning: this will also ignore any changelog files passed via `--release-notes`,
-#   # and will render an empty changelog.
-#   # This may result in an empty release notes on GitHub/GitLab/Gitea.
-#   skip: false 
+changelog:
+  # Set this to true if you don't want any changelog at all.
+  # Warning: this will also ignore any changelog files passed via `--release-notes`,
+  # and will render an empty changelog.
+  # This may result in an empty release notes on GitHub/GitLab/Gitea.
+  skip: false 
 
-#   # # Changelog generation implementation to use.
-#   # #
-#   # # Valid options are:
-#   # # - `git`: uses `git log`;
-#   # # - `github`: uses the compare GitHub API, appending the author login to the changelog.
-#   # # - `gitlab`: uses the compare GitLab API, appending the author name and email to the changelog.
-#   # # - `github-native`: uses the GitHub release notes generation API, disables the groups feature.
-#   # #
-#   # # Defaults to `git`.
-#   # use: github
+  # Changelog generation implementation to use.
+  #
+  # Valid options are:
+  # - `git`: uses `git log`;
+  # - `github`: uses the compare GitHub API, appending the author login to the changelog.
+  # - `gitlab`: uses the compare GitLab API, appending the author name and email to the changelog.
+  # - `github-native`: uses the GitHub release notes generation API, disables the groups feature.
+  #
+  # Defaults to `git`.
+  use: github
 
-#   # Sorts the changelog by the commit's messages.
-#   # Could either be asc, desc or empty
-#   # Default is empty
-#   sort: asc
+  # Sorts the changelog by the commit's messages.
+  # Could either be asc, desc or empty
+  # Default is empty
+  sort: asc
 
-#   # Max commit hash length to use in the changelog.
-#   #
-#   # 0: use whatever the changelog implementation gives you
-#   # -1: remove the commit hash from the changelog
-#   # any other number: max length.
-#   #
-#   # Default: 0.
-#   # Since: v1.11.2
-#   abbrev: -1
+  # Max commit hash length to use in the changelog.
+  #
+  # 0: use whatever the changelog implementation gives you
+  # -1: remove the commit hash from the changelog
+  # any other number: max length.
+  #
+  # Default: 0.
+  abbrev: 0
+
+    filters:
+    # Commit messages matching the regexp listed here will be removed from
+    # the changelog
+    # Default is empty
+    exclude:
+      - '^docs:'
+      - typo
+
