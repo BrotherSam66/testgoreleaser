@@ -33,8 +33,8 @@ builds:
     # Defaults are darwin and linux.
     goos:
       - linux
-      # - windows
-      # - darwin
+      - windows
+      - darwin
 
     # GOARCH to build for.
     # For more info refer to: https://golang.org/doc/install/source#environment
@@ -48,7 +48,7 @@ builds:
     # # Default is only 6.
     # goarm:
     #   - 6
-    #   # - 7
+    #   - 7
 
     # # GOAMD64 to build when GOARCH is amd64.
     # # For more info refer to: https://golang.org/doc/install/source#environment
@@ -73,7 +73,7 @@ dockers:
     # goos: linux
 
     # GOARCH of the built binaries/packages that should be used. 
-    # goarch: amd64
+    goarch: amd64
 
     # GOAMD64 of the built binaries/packages that should be used.
     # goamd64: 'v2'
@@ -126,49 +126,23 @@ dockers:
     - --label=org.opencontainers.image.revision={{ .FullCommit }}
     - --label=org.opencontainers.image.licenses=MIT
 
-# dockers:
-# - image_templates:
-#   - "brothersam/guanceexample:{{ .Version }}-amd64"
-#   use: docker
-#   dockerfile: Dockerfile
-#   build_flag_templates:
-#   - "--platform=linux/amd64"
-# - image_templates:
-#   - "brothersam/guanceexample:{{ .Version }}-arm64v8"
-#   use: docker
-#   goarch: arm64
-#   dockerfile: Dockerfile
-#   build_flag_templates:
-#   - "--platform=linux/arm64/v8"
 
-# docker_manifests:
-# - 
-#   id: myimg
-#   name_template: brothersam/guanceexample:{{ .Version }}
-#   image_templates:
-#   - brothersam/guanceexample:{{ .Version }}-amd64
-#   - brothersam/guanceexample:{{ .Version }}-arm64v8
-#   # create_flags:
-#   # - --insecure
-#   # push_flags:
-#   # - --insecure
-#   # skip_push: false
-#   # use: docker
-
-
-# # GoReleaser can be wired to nfpm to generate and publish .deb, .rpm and .apk packages.  
-# nfpms:
-# - maintainer: Carlos A Becker <root@carlosbecker.dev>
-#   description: Sample project.
-#   homepage: https://github.com/brothersam66/tasktimer
-#   license: MIT
-#   formats:
-#   - deb
-#   - rpm
-#   - apk     
+# GoReleaser can be wired to nfpm to generate and publish .deb, .rpm and .apk packages.  
+nfpms:
+- maintainer: Carlos A Becker <root@carlosbecker.dev>
+  description: Sample project.
+  homepage: https://github.com/brothersam66/tasktimer
+  license: MIT
+  formats:
+  - deb
+  - rpm
+  - apk     
 
 
 env_files:
+  # your github_token in this file
+  # or
+  # setup ENV github token: $ export GITHUB_TOKEN="YOUR_GH_TOKEN"
   github_token: ~/go/src/github.com/github_token
 
 # changelog:
