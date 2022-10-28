@@ -94,3 +94,5 @@ https://www.jianshu.com/p/82f6cf124805
 
 ###  镜像 命名
 https://hub.docker.com/_/golang/tags
+###  github actions
+https://goreleaser.com/ci/actions/
