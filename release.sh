@@ -1,6 +1,6 @@
 git add .
 # testcommit: your commite message
-git commit -m "testcommit"
+git commit -m "testactions"
 # master: your branch name 
 git push origin master
 # vXX.XX.XX: your version. your tag
