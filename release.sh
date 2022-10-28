@@ -6,6 +6,6 @@ git push origin master
 # vXX.XX.XX: your version. your tag
 git tag -a v0.3.83 -m "test release"
 # release and push to github & docker.io
-goreleaser release  --rm-dist
+# goreleaser release  --rm-dist
 # only test realase
 # goreleaser --snapshot --skip-publish --rm-dist
