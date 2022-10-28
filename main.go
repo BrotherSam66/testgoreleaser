@@ -12,7 +12,7 @@ import (
 
 func main() {
 	str := `
-  GGGG                                               l
+  GGGG                                               l 
  GG  GG                                              l
 GG    G                                              l
 GG    G                                              l
