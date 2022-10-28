@@ -15,7 +15,12 @@ jobs:
   your_job_id:
     runs-on: ubuntu-latest
     steps:
+    # checkout action 是一个标准动作，当以下情况时必须且需要率先使用:
+    # （1）workflow 需要项目库的代码副本，比如构建、测试、或持续集成这些操作。
+    # （2）workflow 中至少有一个 action是在同一个项目库下定义的。
       - uses: actions/checkout@v3
+        # 如果你只想浅克隆你的库，或者只复制最新的版本，你可以在 with中使用fetch-depth声明，
+        # 例如: fetch-depth: 1
         with:
           fetch-depth: 0
       - run: git fetch --force --tags

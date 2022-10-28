@@ -139,11 +139,11 @@ builds:
 #   - apk     
 
 
-env_files:
-  # your github_token in this file
-  # or
-  # setup ENV github token: $ export GITHUB_TOKEN="YOUR_GH_TOKEN"
-  github_token: ~/go/src/github.com/github_token
+# env_files:
+#   # your github_token in this file
+#   # or
+#   # setup ENV github token: $ export GITHUB_TOKEN="YOUR_GH_TOKEN"
+#   github_token: ~/go/src/github.com/github_token
 
 changelog:
   # Set this to true if you don't want any changelog at all.
