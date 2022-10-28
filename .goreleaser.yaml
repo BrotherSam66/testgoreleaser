@@ -33,15 +33,15 @@ builds:
     # Defaults are darwin and linux.
     goos:
       - linux
-      - windows
-      - darwin
+      # - windows
+      # - darwin
 
     # GOARCH to build for.
     # For more info refer to: https://golang.org/doc/install/source#environment
     # Defaults are 386, amd64 and arm64.
     goarch:
       - amd64
-      - arm64
+      # - arm64
 
     # # GOARM to build for when GOARCH is arm.
     # # For more info refer to: https://golang.org/doc/install/source#environment
@@ -127,16 +127,16 @@ builds:
 #     # - --label=org.opencontainers.image.licenses=MIT
 
 
-# GoReleaser can be wired to nfpm to generate and publish .deb, .rpm and .apk packages.  
-nfpms:
-- maintainer: Carlos A Becker <root@carlosbecker.dev>
-  description: Sample project.
-  homepage: https://github.com/brothersam66/tasktimer
-  license: MIT
-  formats:
-  - deb
-  - rpm
-  - apk     
+# # GoReleaser can be wired to nfpm to generate and publish .deb, .rpm and .apk packages.  
+# nfpms:
+# - maintainer: Carlos A Becker <root@carlosbecker.dev>
+#   description: Sample project.
+#   homepage: https://github.com/brothersam66/tasktimer
+#   license: MIT
+#   formats:
+#   - deb
+#   - rpm
+#   - apk     
 
 
 env_files:
