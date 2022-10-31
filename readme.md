@@ -1,4 +1,4 @@
-# GoReleaser 使用
+# GoReleaser
 
 ##  GoReleaser 介绍
    goreleaser 是一个方便的 go 二进制包分发工具。可以帮助我们进行 go 二进制包的快速，简单分发。
@@ -56,3 +56,12 @@
    ```  
 ## 发布到 `github` && `docker.io`
    goreleaser release --rm-dist
+
+##  通过 Github Actions 部署 Mkdocs 文档
+https://cloud.tencent.com/developer/article/1935771
+### 安装 Mkdocs 以及 Mkdocs 主题
+pip install --user mkdocs mkdocs-material
+### 创建并测试站点
+通过 mkdocs new <目录>就可以快速创建文档站点。目录里会生成mkdocs.yml文件和docs目录，目录内有默认的index.md文件，你可以修改和增加文件。
+
+在所在目录执行 mkdocs serve，你就可以在http://localhost:8000看到初始化的文档。Mkdocs 会监测目录的改动并重新生成站点更新浏览器。

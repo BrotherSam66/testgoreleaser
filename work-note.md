@@ -96,3 +96,10 @@ https://www.jianshu.com/p/82f6cf124805
 https://hub.docker.com/_/golang/tags
 ###  github actions
 https://goreleaser.com/ci/actions/
+
+###  通过 Github Actions 部署 Mkdocs 文档
+https://cloud.tencent.com/developer/article/1935771
+
+pip install --user mkdocs mkdocs-material
+mkdocs new <目录>
+mkdocs serve

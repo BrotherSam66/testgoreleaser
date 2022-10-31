@@ -11,6 +11,7 @@ import (
 )
 
 func main() {
+
 	str := `
   GGGG                                               l 
  GG  GG                                              l
