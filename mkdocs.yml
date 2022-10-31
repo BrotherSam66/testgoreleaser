@@ -52,14 +52,14 @@ markdown_extensions:
 
 copyright: '&copy; 2013-2022 上海驻云信息科技有限公司 沪公网安备 31011502010862号 | 沪ICP备 13034243号-30'
 
-extra:
-  generator: false
+# extra:
+#   generator: false
 
-plugins:
-  - awesome-pages
-  - section-index
-  - search:
-      separator: '[\s\u200b\-]'
+# plugins:
+#   - awesome-pages
+#   - section-index
+#   - search:
+#       separator: '[\s\u200b\-]'
 
 # Developer configuration
 dev_addr: "0.0.0.0:8000"
