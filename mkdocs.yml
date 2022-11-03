@@ -16,53 +16,46 @@ theme:
 
 plugins:
   - search
-  # - redirects:
-  #       redirect_maps:
-  #           'docs/index.en.md': 'docs/tutorials/index.en.md'
-  #           'docs/index.zh.md': 'docs/tutorials/index.zh.md'
 
   - i18n:
       languages:
-        zh: "中文"
-        en: "English"
-      default_language: 'en'
-      material_alternate: false
-      translate_nav:
-        zh:
-          tutorials   : "用户指南"
-          how-tos     : "最佳实践"
-          explaination: "设计文档"
-          references  : "参考文档"   
         en:
-          tutorials   : "tutorials"
-          how-tos     : "how-tos"
-          explaination: "explaination"
-          references  : "references"
+          name: English
+          build: true
+          site_name: PPL language
+        zh:
+          name: 中文
+          build: true
+          site_name: PPL 语言
+
+      default_language: en
+      # material_alternate: false
+      nav_translations:
+        zh:
+          tutorials   : 用户指南
+          how-tos     : 最佳实践
+          explaination: 设计文档
+          references  : 参考文档 
 
 nav:
 - tutorials:
-  - Overview: index.md
-  - 概述: index.zh.md
+  - index.md
 - how-tos:
   - how-tos/index.md
-  - how-tos/index.zh.md
 - explaination:
   - explaination/index.md
-  - explaination/index.zh.md
 - references:
   - references/pipeline.md
-  - references/pipeline.zh.md
   - references/grok.md
-  - references/grok.zh.md
 
 extra:
   alternate:
     - name: English
-      link: ""
+      link: ./en/
       lang: en
 
     - name: 中文
-      link: index.zh/
+      link: ./zh/
       lang: zh
 
 
