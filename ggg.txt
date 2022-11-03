@@ -1,0 +1,10 @@
+# mkdocs-material 8.2.15 depends on jinja2>=2.11.1
+mkdocs-material==8.2.15
+jinja2==3.0.2
+
+mkdocs-section-index==0.3.4
+Markdown==3.3.7
+pymdown-extensions==9.4
+jieba==0.42.1
+markupsafe==2.0.1
+mkdocs-awesome-pages-plugin==2.7.0

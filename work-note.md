@@ -94,12 +94,22 @@ https://www.jianshu.com/p/82f6cf124805
 
 ###  镜像 命名
 https://hub.docker.com/_/golang/tags
-###  github actions
+##  github actions
 https://goreleaser.com/ci/actions/
 
-###  通过 Github Actions 部署 Mkdocs 文档
+##  通过 Github Actions 部署 Mkdocs 文档
+
 https://cloud.tencent.com/developer/article/1935771
 
+### 本地文档书写、调试
+#### 安装 Mkdocs 以及 Mkdocs 主题
 pip install --user mkdocs mkdocs-material
-mkdocs new <目录>
-mkdocs serve
+#### 创建并测试站点
+通过 mkdocs new <目录> 就可以快速创建文档站点。目录里会生成 mkdocs.yml 文件和docs目录，目录内有默认的index.md文件，你可以修改和增加文件。
+#### 发行
+<目录> 里 mkdocs serve
+
+## 国际化网站，多语言下拉选择
+例如 https://github.com/aws/copilot-cli/tree/mainline/site/content/docs
+
+效果 https://aws.github.io/copilot-cli/ja/

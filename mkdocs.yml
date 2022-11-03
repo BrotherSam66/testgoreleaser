@@ -1,65 +1,50 @@
-# site_name: My Docs
-# theme: 
-#   name: material
-#   language: zh
-#   highlightjs: true
+site_name: PPL Language
 
-site_name: PPL 文档
-
-#custom_dir: overrides/
 theme:
-  palette:
-    primary: white
   name: material
-  favicon: favicon.ico
-  logo: logo.png
-  language: zh
-  features:
-    - navigation.instant
-    - search.suggest
-    - toc.follow
-    - navigation.tabs
-    - navigation.expand
-
-markdown_extensions:
-  - admonition
-  - attr_list
-  - md_in_html
-  - toc:
-      permalink: True
-  - meta
-  - pymdownx.caret
-  - pymdownx.mark
-  - pymdownx.tilde
-  - pymdownx.betterem
-  - pymdownx.critic
-  - pymdownx.keys
-  - pymdownx.snippets
-  - pymdownx.details
-  - pymdownx.tabbed:
-      alternate_style: true
-  - pymdownx.highlight:
-      anchor_linenums: true
-      auto_title: false
-      linenums: true
-  - pymdownx.inlinehilite
-  - pymdownx.superfences
-  - pymdownx.emoji:
-      emoji_index: !!python/name:materialx.emoji.twemoji
-      emoji_generator: !!python/name:materialx.emoji.to_svg
-  - pymdownx.tasklist:
-      custom_checkbox: true
-
-copyright: '&copy; 2013-2022 上海驻云信息科技有限公司 沪公网安备 31011502010862号 | 沪ICP备 13034243号-30'
-
-extra:
-  generator: false
 
 plugins:
-  - awesome-pages
-  - section-index
-  - search:
-      separator: '[\s\u200b\-]'
+  - search
+  - i18n:
+      languages:
+        zh: "中文"
+        en: "English"
+      default_language: 'en'
+      # no_translation:
+      #   ca: "Aquesta pàgina no està traduida al català."
+      #   en: "This page isn't translated to English."
+      translate_nav:
+        zh:
+          section title: "章节"
+          subsection: "小节"
+          page title: "页面标题"
+        en:
+          section title: "Section"
+          subsection: "Subsection"
+          page title: "Page with title translated"
 
-# Developer configuration
-dev_addr: "0.0.0.0:8000"
+nav:
+- index.md
+- index.zh.md
+- section title:
+  - no-nav-title.md
+  - no-nav-title.zh.md
+  - Page Title: nav-title.en.md
+  - 有页面标题: nav-title.zh.md
+  - subsection:
+    - dir/index.md
+    - dir/index.zh.md
+    - page title: translated-title.zh.md
+    - page title: translated-title.en.md
+
+extra:
+  # Default mkdocs-material alternate links for untranslated pages
+  # https://squidfunk.github.io/mkdocs-material/setup/changing-the-language/#site-language-selector
+  alternate:
+    - name: English
+      link: ""
+      lang: en
+
+    - name: 中文
+      link: index.ca/
+      lang: zh
