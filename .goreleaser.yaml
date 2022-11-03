@@ -143,7 +143,15 @@ env_files:
   # your github_token in this file
   # or
   # setup ENV github token: $ export GITHUB_TOKEN="YOUR_GH_TOKEN"
+
   # github_token: ~/go/src/github.com/github_token
+
+brews:
+- name: myproject
+  tap:
+    owner: user
+    name: homebrew-tap
+    token: "{{ .Env.GITHUB_TOKEN }}"
 
 changelog:
   # Set this to true if you don't want any changelog at all.
