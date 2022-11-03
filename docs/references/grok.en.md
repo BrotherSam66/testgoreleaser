@@ -1,19 +1,19 @@
-# Grok EN
+# Grok
 
 ## Grok Pattern
 
-PPL 中 grok pattern 可以分为两类：
+Grok patterns in PPL can be divided into two categories:
 
-- 内置模式：内置 pattern，所有 pipeline 脚本都可使用
-- 局部模式：在 ppl 脚本中通过 add_pattern() 函数新增的模式为局部模式，只针对当前 pipeline 脚本有效
+- Built-in pattern: built-in pattern, available to all pipeline scripts
+- Local mode: The mode added by the add_pattern() function in the ppl script is a local mode, which is only valid for the current pipeline script
 
-以下以 Nginx access-log 为例，说明一下如何编写对应的 grok，原始 nginx access log 如下：
+The following takes Nginx access-log as an example to illustrate how to write the corresponding grok. The original nginx access log is as follows:
 
 ```log
 127.0.0.1 - - [26/May/2022:20:53:52 +0800] "GET /server_status HTTP/1.1" 404 134 "-" "Go-http-client/1.1"
 ```
 
-假设我们需要从该访问日志中获取 client_ip、time (request)、http_method、http_url、http_version、status_code 这些内容，那么 grok pattern 可以写成:
+Suppose we need to get client_ip, time (request), http_method, http_url, http_version, status_code from the access log, then the grok pattern can be written as:
 
 ```python
 # access log
@@ -35,37 +35,37 @@ nullif(upstream, "")
 default_time(time)
 ```
 
-### Grok 组合
+### Grok combination
 
-grok 本质是预定义一些正则表达式来进行文本匹配提取，并且给预定义的正则表达式进行命名，方便使用与嵌套引用扩展出无数个新模式。比如 PPL 有 3 个如下内置模式：
+The essence of grok is to predefine some regular expressions for text matching extraction, and to name the predefined regular expressions, so that it is convenient to use and nested references to expand countless new patterns. For example, PPL has 3 built-in modes as follows:
 
 ```python
-_second (?:(?:[0-5]?[0-9]|60)(?:[:.,][0-9]+)?)    # 匹配秒数，_second为模式名
-_minute (?:[0-5][0-9])                            # 匹配分钟数，_minute为模式名
-_hour (?:2[0123]|[01]?[0-9])                      # 匹配年份，_hour为模式名
+_second (?:(?:[0-5]?[0-9]|60)(?:[:.,][0-9]+)?)    # Match seconds, _second is the pattern name
+_minute (?:[0-5][0-9])                            # Match minutes, _minute is the pattern name
+_hour (?:2[0123]|[01]?[0-9])                      # Match hours, _hour is the pattern name
 ```
 
-基于上面三个内置模式，可以扩展出自己内置模式且命名为 `time`:
+Based on the above three built-in modes, you can extend your own built-in mode and name it `time`:
 
 ```python
-# 把 time 加到 pattern 目录下文件中，此模式为全局模式，任何地方都能引用 time
+# Add time to the file in the pattern directory, this pattern is a global pattern, and time can be referenced anywhere
 time ([^0-9]?)%{hour:hour}:%{minute:minute}(?::%{second:second})([^0-9]?)
 
-# 也可以通过 add_pattern() 添加到 pipeline 文件中，则此模式变为局部模式，只有当前 pipeline 脚本能使用 time
+# It can also be added to the pipeline file through add_pattern(), then this mode becomes a local mode, only the current pipeline script can use time
 add_pattern(time, "([^0-9]?)%{HOUR:hour}:%{MINUTE:minute}(?::%{SECOND:second})([^0-9]?)")
 
-# 通过 grok 提取原始输入中的时间字段。假定输入为 12:30:59，则提取到 {"hour": 12, "minute": 30, "second": 59}
+# Extract the time field from the original input via grok. Assuming the input is 12:30:59, this extracts to {"hour": 12, "minute": 30, "second": 59}
 grok(_, %{time})
 ```
 
-注意事项：
+Precautions:
 
-- 如果出现同名模式，则以局部模式优先（即局部模式覆盖全局模式）
-- pipeline 脚本中，`add_pattern` 函数需在 `grok` 函数前面调用，否则会导致第一条数据提取失败
+- If a pattern with the same name appears, the local pattern takes precedence (ie the local pattern overrides the global pattern)
+- In the pipeline script, the `add_pattern` function needs to be called before the `grok` function, otherwise the first data extraction will fail
 
-### 内置的 Pattern 列表
+### List of built-in patterns
 
-我们在使用 Grok 切割的时候，可以直接使用内置的 Grok Pattern：
+When we use Grok cutting, we can directly use the built-in Grok Pattern:
 
 ```
 USERNAME             : [a-zA-Z0-9._-]+
