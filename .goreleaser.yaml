@@ -142,7 +142,7 @@ dockers:
 env_files:
   # your github_token in this file
   # or
-  setup ENV github token: $ export GITHUB_TOKEN="YOUR_GH_TOKEN"
+  # setup ENV github token: $ export GITHUB_TOKEN="YOUR_GH_TOKEN"
   # github_token: ~/go/src/github.com/github_token
 
 changelog:
