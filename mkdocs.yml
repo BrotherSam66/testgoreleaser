@@ -4,8 +4,7 @@ theme:
   name: material
   palette:
       primary: white 
-  # favicon: favicon.ico
-  # logo: logo.png
+
   language: en
   features:
     - navigation.instant
@@ -57,6 +56,3 @@ extra:
     - name: 中文
       link: ./zh/
       lang: zh
-
-
-
