@@ -1,0 +1,7 @@
+*[L]: Liter(s)
+*[Tbsp]: Tablespoon(s)
+*[lb]: Pound(s)
+*[oz]: Ounce(s)
+*[pt]: Pint(s)
+*[qt]: Quart(s)
+*[tsp]: Teaspoon(s)

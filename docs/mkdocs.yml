@@ -26,7 +26,7 @@ plugins:
         zh: "中文"
         en: "English"
       default_language: 'en'
-      material_alternate: false
+
       translate_nav:
         zh:
           tutorials   : "用户指南"

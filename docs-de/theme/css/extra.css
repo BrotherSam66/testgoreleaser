@@ -1,0 +1,11 @@
+html a[title="Gitlab"].md-social__link svg {
+  color: #fca121;
+}
+
+html a[title="Instagram"].md-social__link svg {
+  color: #e4405f;
+}
+
+html a[title="Paypal"].md-social__link svg {
+  color: #0079c1;
+}
