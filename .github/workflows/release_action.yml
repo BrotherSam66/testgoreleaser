@@ -9,6 +9,10 @@ name: "Release"
 
 on:
   push:
+    branches:
+      - master 
+      - main
+      - dev
     tags:
       - "v*"
 
