@@ -1,0 +1,1445 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-8.5.7">
+    
+    
+      
+        <title>Pipeline language - PPL language</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.20d9efc8.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.cbb835fc.min.css">
+        
+          
+          
+          <meta name="theme-color" content="#ffffff">
+        
+      
+      
+
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="white" data-md-color-accent="">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#pipeline-language" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../" title="PPL language" class="md-header__button md-logo" aria-label="PPL language" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            PPL language
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Pipeline language
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <div class="md-header__option">
+        <div class="md-select">
+          
+          <button class="md-header__button md-icon" aria-label="Select language">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12.87 15.07-2.54-2.51.03-.03A17.52 17.52 0 0 0 14.07 6H17V4h-7V2H8v2H1v2h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11.76-2.04M18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2l-4.5-12m-2.62 7 1.62-4.33L19.12 17h-3.24Z"/></svg>
+          </button>
+          <div class="md-select__inner">
+            <ul class="md-select__list">
+              
+                <li class="md-select__item">
+                  <a href="../../" hreflang="en" class="md-select__link">
+                    English
+                  </a>
+                </li>
+                
+                <li class="md-select__item">
+                  <a href="../../../zh/" hreflang="zh" class="md-select__link">
+                    中文
+                  </a>
+                </li>
+                
+            </ul>
+          </div>
+        </div>
+      </div>
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../" class="md-tabs__link">
+        tutorials
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../how-tos/" class="md-tabs__link">
+        how-tos
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../explaination/" class="md-tabs__link">
+        explaination
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="./" class="md-tabs__link md-tabs__link--active">
+        references
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../" title="PPL language" class="md-nav__button md-logo" aria-label="PPL language" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    PPL language
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_1" type="checkbox" id="__nav_1" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_1">
+          tutorials
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="tutorials" data-md-level="1">
+        <label class="md-nav__title" for="__nav_1">
+          <span class="md-nav__icon md-icon"></span>
+          tutorials
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../" class="md-nav__link">
+        Overview
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2">
+          how-tos
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="how-tos" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          how-tos
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../how-tos/" class="md-nav__link">
+        Overview
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3">
+          explaination
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="explaination" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          explaination
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../explaination/" class="md-nav__link">
+        Overview
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4">
+          references
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="references" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          references
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Pipeline language
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Pipeline language
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#identifiers-and-keywords" class="md-nav__link">
+    Identifiers and Keywords
+  </a>
+  
+    <nav class="md-nav" aria-label="Identifiers and Keywords">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#identifier" class="md-nav__link">
+    Identifier
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#special-identifier" class="md-nav__link">
+    special identifier
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#keywords" class="md-nav__link">
+    Keywords
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#comments" class="md-nav__link">
+    comments
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#built-in-data-types" class="md-nav__link">
+    Built-in data types
+  </a>
+  
+    <nav class="md-nav" aria-label="Built-in data types">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#basic-type" class="md-nav__link">
+    basic type
+  </a>
+  
+    <nav class="md-nav" aria-label="basic type">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#integer-int-type" class="md-nav__link">
+    Integer (int) type
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#floating-point-float-type" class="md-nav__link">
+    floating point (float) type
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#boolean-type" class="md-nav__link">
+    boolean type
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#character-str-string-type" class="md-nav__link">
+    character (str) string type
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nil-type" class="md-nav__link">
+    Nil type
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#compound-types" class="md-nav__link">
+    Compound Types
+  </a>
+  
+    <nav class="md-nav" aria-label="Compound Types">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#map-type" class="md-nav__link">
+    Map type
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#list-type" class="md-nav__link">
+    List type
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#operator" class="md-nav__link">
+    operator
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#expression" class="md-nav__link">
+    expression
+  </a>
+  
+    <nav class="md-nav" aria-label="expression">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#call-expression" class="md-nav__link">
+    call expression
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#binary-expressions" class="md-nav__link">
+    Binary expressions
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#list-initializer" class="md-nav__link">
+    List initializer
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#map-initializer" class="md-nav__link">
+    Map initializer
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bracket-expression" class="md-nav__link">
+    bracket expression
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#statement" class="md-nav__link">
+    statement
+  </a>
+  
+    <nav class="md-nav" aria-label="statement">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#value-statement-expression-statement" class="md-nav__link">
+    Value Statement (Expression Statement)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#select-statement" class="md-nav__link">
+    select statement
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#loop-statement" class="md-nav__link">
+    loop statement
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../grok/" class="md-nav__link">
+        Grok
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#identifiers-and-keywords" class="md-nav__link">
+    Identifiers and Keywords
+  </a>
+  
+    <nav class="md-nav" aria-label="Identifiers and Keywords">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#identifier" class="md-nav__link">
+    Identifier
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#special-identifier" class="md-nav__link">
+    special identifier
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#keywords" class="md-nav__link">
+    Keywords
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#comments" class="md-nav__link">
+    comments
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#built-in-data-types" class="md-nav__link">
+    Built-in data types
+  </a>
+  
+    <nav class="md-nav" aria-label="Built-in data types">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#basic-type" class="md-nav__link">
+    basic type
+  </a>
+  
+    <nav class="md-nav" aria-label="basic type">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#integer-int-type" class="md-nav__link">
+    Integer (int) type
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#floating-point-float-type" class="md-nav__link">
+    floating point (float) type
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#boolean-type" class="md-nav__link">
+    boolean type
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#character-str-string-type" class="md-nav__link">
+    character (str) string type
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nil-type" class="md-nav__link">
+    Nil type
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#compound-types" class="md-nav__link">
+    Compound Types
+  </a>
+  
+    <nav class="md-nav" aria-label="Compound Types">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#map-type" class="md-nav__link">
+    Map type
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#list-type" class="md-nav__link">
+    List type
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#operator" class="md-nav__link">
+    operator
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#expression" class="md-nav__link">
+    expression
+  </a>
+  
+    <nav class="md-nav" aria-label="expression">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#call-expression" class="md-nav__link">
+    call expression
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#binary-expressions" class="md-nav__link">
+    Binary expressions
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#list-initializer" class="md-nav__link">
+    List initializer
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#map-initializer" class="md-nav__link">
+    Map initializer
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bracket-expression" class="md-nav__link">
+    bracket expression
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#statement" class="md-nav__link">
+    statement
+  </a>
+  
+    <nav class="md-nav" aria-label="statement">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#value-statement-expression-statement" class="md-nav__link">
+    Value Statement (Expression Statement)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#select-statement" class="md-nav__link">
+    select statement
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#loop-statement" class="md-nav__link">
+    loop statement
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="pipeline-language">Pipeline language</h1>
+<p>The following is the Pipeline processor language definition. With the gradual support of different syntaxes, this document will be adjusted, added or deleted to varying degrees. The following is the Pipeline processor language definition. With the gradual support of different syntaxes, this document will be adjusted, added or deleted to varying degrees.</p>
+<h2 id="identifiers-and-keywords">Identifiers and Keywords</h2>
+<h3 id="identifier">Identifier</h3>
+<p>Identifiers are used to identify objects and can be used to represent a variable, function, etc. The identifier contains keywords</p>
+<p>Custom identifiers cannot duplicate keywords in the Pipeline data processor language</p>
+<p>Identifiers can consist of numbers (<code>0-9</code>), letters (<code>A-Z a-z</code>), and underscores (<code>_</code>), but the first character cannot be a number and is case sensitive:</p>
+<ul>
+<li><code>_abc</code></li>
+<li><code>abc</code></li>
+<li><code>abc1</code></li>
+<li><code>abc_1_</code></li>
+</ul>
+<p>If you need to start with a letter or use backticks outside of the above characters in an identifier:</p>
+<ul>
+<li><code>`1abc`</code></li>
+<li><code>`@some-variable`</code></li>
+<li><code>`This is an emoji variable👍`</code></li>
+</ul>
+<h3 id="special-identifier">special identifier</h3>
+<p>The special identifier (<code>_</code>) represents the external raw input data when the ppl script is triggered, this parameter may be implicitly passed to some functions</p>
+<p>In some functions, <code>_</code> will be treated as an alias for <code>message</code> for forward compatibility.</p>
+<h3 id="keywords">Keywords</h3>
+<p>Keywords are words with special meaning, such as <code>if</code>, <code>elif</code>, <code>else</code>, <code>for</code>, <code>in</code>, <code>break</code>, <code>continue</code>, etc.</p>
+<h2 id="comments">comments</h2>
+<p>Use <code>#</code> as a line comment character, inline comments are not supported</p>
+<pre><code class="language-python"># This is a line comment
+a = 1 # this is a line comment
+
+&quot;&quot;&quot;
+This is a (multi-line) string that replaces the comment
+&quot;&quot;&quot;
+a = 2
+
+&quot;string&quot;
+a = 3
+</code></pre>
+<h2 id="built-in-data-types">Built-in data types</h2>
+<p>In the Pipeline data processor language, the type of the value of a variable can change dynamically, but each value has its data type, which can be one of the <strong>basic types</strong>, or a <strong>composite type</strong>.</p>
+<h3 id="basic-type">basic type</h3>
+<h4 id="integer-int-type">Integer (int) type</h4>
+<p>Integer type length is 64bit, signed, currently only supports writing integer literals in decimal, such as <code>-1</code>, <code>0</code>, <code>1</code>, <code>+19</code></p>
+<h4 id="floating-point-float-type">floating point (float) type</h4>
+<p>The type of floating-point type is 64bit in length and signed. Currently, only floating-point literals can be written in decimal, such as <code>-1.00001</code>, <code>0.0</code>, <code>1.0</code>, <code>+19.0</code></p>
+<h4 id="boolean-type">boolean type</h4>
+<p>There are only two types of boolean literals, <code>true</code> and <code>false</code></p>
+<h4 id="character-str-string-type">character (str) string type</h4>
+<p>String literals can be written in double or single quotes, and multi-line strings can be written using triple double or triple single quotes to enclose the content</p>
+<ul>
+<li>
+<p><code>"hello world"</code></p>
+</li>
+<li>
+<p><code>'hello world'</code></p>
+</li>
+<li>
+<p><code>"""hello
+    world"""</code></p>
+</li>
+<li>
+<p><code>'''
+    hello
+    world
+    '''</code></p>
+</li>
+</ul>
+<h4 id="nil-type">Nil type</h4>
+<p>nil is a special data type that means no value. The literal of this type is <code>nil</code>. When a variable is used without assignment, its value is nil</p>
+<h3 id="compound-types">Compound Types</h3>
+<p>The map type is different from the list type and the basic type. Multiple variables can point to the same map or list object. When assigning a value, the memory copy of the list or map is not performed, but a reference is made.</p>
+<h4 id="map-type">Map type</h4>
+<p>The map type is a key-value structure, only the string type can be used as the key, and the data type of the value is not limited</p>
+<p>It can read and write elements in the map through index expressions</p>
+<pre><code class="language-python">a = {
+  &quot;1&quot;: [1, &quot;2&quot;, 3, nil],
+  &quot;2&quot;: 1.1,
+  &quot;abc&quot;: nil,
+  &quot;def&quot;: true
+}
+
+# Since a[&quot;1&quot;] is a list object，b just refers to the value of a[&quot;1&quot;]
+b = a[&quot;1&quot;]
+
+&quot;&quot;&quot;
+now a[&quot;1&quot;][0] == 1.1
+&quot;&quot;&quot;
+b[0] = 1.1
+</code></pre>
+<h4 id="list-type">List type</h4>
+<p>The list type can store any number of values of any type in a list
+It can read and write elements in the list through index expressions</p>
+<pre><code class="language-python">a = [1, &quot;2&quot;, 3.0, false, nil, {&quot;a&quot;: 1}]
+
+a = a[0] # a == 1
+</code></pre>
+<h2 id="operator">operator</h2>
+<p>The following operators are currently supported by PPL. The higher the value, the higher the priority.</p>
+<table>
+<thead>
+<tr>
+<th>Priority</th>
+<th>Symbol</th>
+<th>Associativity</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><code>=</code></td>
+<td>right</td>
+<td>assignment; named arguments; lowest precedence</td>
+</tr>
+<tr>
+<td>2</td>
+<td><code>||</code></td>
+<td>Left</td>
+<td>Logical OR</td>
+</tr>
+<tr>
+<td>3</td>
+<td><code>&amp;&amp;</code></td>
+<td>left</td>
+<td>logical AND</td>
+</tr>
+<tr>
+<td>4</td>
+<td><code>&gt;=</code></td>
+<td>left</td>
+<td>condition "greater than or equal to"</td>
+</tr>
+<tr>
+<td>4</td>
+<td><code>&gt;</code></td>
+<td>left</td>
+<td>condition "greater than"</td>
+</tr>
+<tr>
+<td>4</td>
+<td><code>!=</code></td>
+<td>left</td>
+<td>condition "not equal to"</td>
+</tr>
+<tr>
+<td>4</td>
+<td><code>==</code></td>
+<td>left</td>
+<td>condition "equals"</td>
+</tr>
+<tr>
+<td>4</td>
+<td><code>&lt;=</code></td>
+<td>left</td>
+<td>condition "less than or equal to"</td>
+</tr>
+<tr>
+<td>4</td>
+<td><code>&lt;</code></td>
+<td>left</td>
+<td>condition "less than"</td>
+</tr>
+<tr>
+<td>5</td>
+<td><code>+</code></td>
+<td>left</td>
+<td>arithmetic "plus"</td>
+</tr>
+<tr>
+<td>5</td>
+<td><code>-</code></td>
+<td>left</td>
+<td>arithmetic "subtract"</td>
+</tr>
+<tr>
+<td>6</td>
+<td><code>*</code></td>
+<td>left</td>
+<td>arithmetic "multiply"</td>
+</tr>
+<tr>
+<td>6</td>
+<td><code>/</code></td>
+<td>left</td>
+<td>arithmetic "divide"</td>
+</tr>
+<tr>
+<td>6</td>
+<td><code>%</code></td>
+<td>left</td>
+<td>arithmetic "remainder"</td>
+</tr>
+<tr>
+<td>7</td>
+<td><code>[]</code></td>
+<td>left</td>
+<td>use list subscript or map key value</td>
+</tr>
+<tr>
+<td>7</td>
+<td><code>()</code></td>
+<td>None</td>
+<td>Can change operator precedence; function call</td>
+</tr>
+</tbody>
+</table>
+<h2 id="expression">expression</h2>
+<p>PPL uses the symbol comma <code>,</code> as the expression separator, such as parameter passing for calling expressions and the separation of expressions during initialization of map and list</p>
+<h3 id="call-expression">call expression</h3>
+<p>The following is a function call to get the number of list elements:</p>
+<pre><code class="language-txt">len([1, 3, &quot;5&quot;])
+</code></pre>
+<h3 id="binary-expressions">Binary expressions</h3>
+<p>An assignment expression is a binary expression that has a return value</p>
+<pre><code class="language-txt"># 0
+2 / 5
+
+# 0.4, promote the type of the left operand to a floating-point number when calculating
+2 / 5.0
+
+# true
+1 + 2 * 3 == 7 &amp;&amp; 1 &lt;= 2
+
+# b == 3;
+# Due to the right associativity of the `=` operator, a = (b = 3), a == 3
+a = b = 3
+</code></pre>
+<h3 id="list-initializer">List initializer</h3>
+<pre><code class="language-txt">[1, true, &quot;1&quot;, nil]
+</code></pre>
+<h3 id="map-initializer">Map initializer</h3>
+<pre><code class="language-txt">{
+  &quot;a&quot;: 1,
+  &quot;b&quot;: &quot;2&quot;,
+}
+</code></pre>
+<h3 id="bracket-expression">bracket expression</h3>
+<p>Bracket expressions can change operand operation precedence in binary expressions, but not associativity</p>
+<pre><code class="language-txt"># 1 + 2 * 3 == 7
+
+(1 + 2) * 3  # == 9
+</code></pre>
+<h2 id="statement">statement</h2>
+<p>All expressions in the PPL can be regarded as value statements. When the expression ends with the statement delimiter <code>;</code> or <code>\n</code>, it will be regarded as a statement. For example, the following script contains four statements</p>
+<pre><code class="language-go">len(&quot;abc&quot;)
+1
+a = 2; a + 2 * 3 % 2
+</code></pre>
+<h3 id="value-statement-expression-statement">Value Statement (Expression Statement)</h3>
+<p>When an expression is followed by a statement separator, it can be regarded as a value statement. The following are four legal statements</p>
+<pre><code class="language-txt">a = 1; b = 2;
+d = [1, 2]
+len(d)
+</code></pre>
+<h3 id="select-statement">select statement</h3>
+<p>The PPL supports the <code>if/elif/else</code> syntax:</p>
+<pre><code class="language-txt">if condition {
+
+}
+</code></pre>
+<pre><code class="language-txt">if condition {
+
+} else {
+
+}
+</code></pre>
+<pre><code class="language-txt">if condition_1 {
+
+} elif condition_2 {
+
+} ... elif condition_n {
+
+} else {
+
+}
+</code></pre>
+<p>Like most programming languages, according to whether the conditions of <code>if/elif</code> are true, enter the corresponding statement block, if not, enter the else branch.</p>
+<p>The current condition can be any expression, as long as its value is one of the built-in data types, the following are the predicate conditions:</p>
+<ul>
+<li>
+<p>When the condition is a value of type <code>int</code>, it is <code>0</code> then the condition is <code>false</code>, otherwise it is <code>true</code></p>
+</li>
+<li>
+<p>When the condition is a value of type <code>float</code>, it is <code>0.0</code> then the condition is <code>false</code>, otherwise it is <code>true</code></p>
+</li>
+<li>
+<p>When the condition is a value of type <code>string</code>, it is an empty string <code>""</code> then the condition is <code>false</code>, otherwise it is <code>true</code></p>
+</li>
+<li>
+<p>When the condition is a value of type <code>bool</code>, the condition is the current value</p>
+</li>
+<li>
+<p>When the condition is a value of type <code>nil</code>, the condition is <code>false</code></p>
+</li>
+<li>
+<p>When the condition is a value of type <code>map</code>, its length is 0 and the condition is <code>false</code>, otherwise it is <code>true</code></p>
+</li>
+<li>
+<p>When the condition is a value of type <code>list</code>, its length is 0 and the condition is <code>false</code>, otherwise it is <code>true</code></p>
+</li>
+</ul>
+<h3 id="loop-statement">loop statement</h3>
+<p>PPL supports <code>for</code> statement and <code>for in</code> statement</p>
+<p>The following are two statements that are only allowed in loop blocks:</p>
+<ul>
+<li><code>cotinue</code> statement, do not execute subsequent statements, continue to start the next loop</li>
+<li><code>break</code> statement, which ends the loop</li>
+</ul>
+<p>Use of <code>for</code> statement may cause infinite loop, should be used with caution, or use <code>for in</code> statement instead</p>
+<pre><code class="language-txt">for init-expr; condition; loop-expr {
+
+}
+</code></pre>
+<pre><code class="language-txt">for varb_name in map_value/list_value/string_value  {
+
+}
+</code></pre>
+<p>Example of use:</p>
+<ol>
+<li>Use <code>for</code> to execute 10 loops</li>
+</ol>
+<pre><code class="language-txt">for a = 0; a &lt; 10; a = a + 1 {
+
+}
+</code></pre>
+<ol>
+<li>Use <code>for in</code> to iterate over all elements of a list</li>
+</ol>
+<pre><code class="language-txt">b = &quot;2&quot;
+for a in [&quot;1&quot;, &quot;a&quot; ,&quot;2&quot;] {
+  b = b + a
+  if b == &quot;21a&quot; {
+    break
+  }
+}
+
+# b == &quot;21a&quot;
+</code></pre>
+<ol>
+<li>Use <code>for in</code> to iterate over all the keys of the map</li>
+</ol>
+<pre><code class="language-txt">d = 0
+map_a = {&quot;a&quot;: 1, &quot;b&quot;:2}
+for x in map_a {
+  d = d + map_a[x]
+}
+</code></pre>
+<ol>
+<li>Use <code>for in</code> to iterate over all characters of string</li>
+</ol>
+<pre><code class="language-txt">s = &quot;&quot;
+for c in &quot;abcdef&quot; {
+  if s == &quot;abc&quot; {
+    break
+  } else {
+    continue
+  }
+  s = s + &quot;a&quot;
+}
+
+# s == &quot;abc&quot;
+</code></pre>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+    <nav class="md-footer__inner md-grid" aria-label="Footer" >
+      
+        
+        <a href="../../explaination/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Overview" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Overview
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../grok/" class="md-footer__link md-footer__link--next" aria-label="Next: Grok" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Grok
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.instant", "search.suggest", "toc.follow", "navigation.tabs", "navigation.expand"], "search": "../../../assets/javascripts/workers/search.16e2a7d4.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.8492ddcf.min.js"></script>
+      
+    
+  </body>
+</html>
