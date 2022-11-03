@@ -5,7 +5,7 @@
 name: "Release"
 
 # Only a single job with this concurrency can run at any given time
-concurrency: release
+# concurrency: release
 
 on:
   push:
