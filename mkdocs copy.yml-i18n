@@ -1,0 +1,50 @@
+site_name: PPL Language
+
+theme:
+  name: material
+
+plugins:
+  - search
+  - i18n:
+      languages:
+        zh: "中文"
+        en: "English"
+      default_language: 'en'
+      # no_translation:
+      #   ca: "Aquesta pàgina no està traduida al català."
+      #   en: "This page isn't translated to English."
+      translate_nav:
+        zh:
+          section title: "章节"
+          subsection: "小节"
+          page title: "页面标题"
+        en:
+          section title: "Section"
+          subsection: "Subsection"
+          page title: "Page with title translated"
+
+nav:
+- index.md
+- index.zh.md
+- section title:
+  - no-nav-title.md
+  - no-nav-title.zh.md
+  - Page Title: nav-title.en.md
+  - 有页面标题: nav-title.zh.md
+  - subsection:
+    - dir/index.md
+    - dir/index.zh.md
+    - page title: translated-title.zh.md
+    - page title: translated-title.en.md
+
+extra:
+  # Default mkdocs-material alternate links for untranslated pages
+  # https://squidfunk.github.io/mkdocs-material/setup/changing-the-language/#site-language-selector
+  alternate:
+    - name: English
+      link: ""
+      lang: en
+
+    - name: 中文
+      link: index.ca/
+      lang: zh

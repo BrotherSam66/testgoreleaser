@@ -110,6 +110,26 @@ pip install --user mkdocs mkdocs-material
 <目录> 里 mkdocs serve
 
 ## 国际化网站，多语言下拉选择
-例如 https://github.com/aws/copilot-cli/tree/mainline/site/content/docs
 
-效果 https://aws.github.io/copilot-cli/ja/
+例如： https://github.com/aws/copilot-cli/tree/mainline/site/content/docs
+
+效果： https://aws.github.io/copilot-cli/ja/
+
+参考案例： https://gitlab.com/mkdocs-i18n/mkdocs-i18n/-/blob/main/mkdocs.yml
+
+### 多语言实施
+
+本地安装 pip3 install mkdocs-i18n，否则 mkdocs serve 受影响。
+
+.github/workflows/rmkdocs_actions.yml 文件加上引用 mkdocs-i18n
+
+      `- run: pip install mkdocs-material mkdocs-awesome-pages-plugin mkdocs-section-index mkdocs-i18n`
+
+mkdocs.yml 文件，参考 demo 写。每个语言一个文件，XXX.zh.md XXX.md XXX.jp.md 就可以。i18n 可以选择正确的显示出来。
+
+
+
+
+
+
+

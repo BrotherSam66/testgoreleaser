@@ -10,41 +10,48 @@ plugins:
         zh: "中文"
         en: "English"
       default_language: 'en'
-      # no_translation:
-      #   ca: "Aquesta pàgina no està traduida al català."
-      #   en: "This page isn't translated to English."
+
       translate_nav:
         zh:
-          section title: "章节"
-          subsection: "小节"
-          page title: "页面标题"
+          tutorials   : "用户指南"
+          how-tos     : "最佳实践"
+          explaination: "设计文档"
+          references  : "参考文档"   
         en:
-          section title: "Section"
-          subsection: "Subsection"
-          page title: "Page with title translated"
+          tutorials   : "tutorials"
+          how-tos     : "how-tos"
+          explaination: "explaination"
+          references  : "references"
 
 nav:
-- index.md
-- index.zh.md
-- section title:
-  - no-nav-title.md
-  - no-nav-title.zh.md
-  - Page Title: nav-title.en.md
-  - 有页面标题: nav-title.zh.md
-  - subsection:
-    - dir/index.md
-    - dir/index.zh.md
-    - page title: translated-title.zh.md
-    - page title: translated-title.en.md
+- Overview: index.en.md
+- 概述: index.zh.md
+- tutorials:
+  - tutorials/index.en.md
+  - tutorials/index.zh.md
+- how-tos:
+  - how-tos/index.en.md
+  - how-tos/index.zh.md
+- explaination:
+  - explaination/index.en.md
+  - explaination/index.zh.md
+- references:
+  - references/pipeline.en.md
+  - references/pipeline.zh.md
+  - references/grok.en.md
+  - references/grok.zh.md
 
 extra:
   # Default mkdocs-material alternate links for untranslated pages
   # https://squidfunk.github.io/mkdocs-material/setup/changing-the-language/#site-language-selector
   alternate:
     - name: English
-      link: ""
+      link: "index.en"
       lang: en
 
     - name: 中文
-      link: index.ca/
+      link: index.zh/
       lang: zh
+
+
+
