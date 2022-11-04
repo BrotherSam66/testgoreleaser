@@ -2,18 +2,18 @@
 
 ## Grok Pattern
 
-Grok patterns in PPL can be divided into two categories:
+Grok pattern in PPL can be divided into two types:
 
-- Built-in pattern: built-in pattern, available to all pipeline scripts
-- Local mode: The mode added by the add_pattern() function in the ppl script is a local mode, which is only valid for the current pipeline script
+- Built-in mode: Built-in pattern, which can be used by all pipeline scripts
+- Local mode: The new mode in the ppl script through add_pattern () function is a local mode, which is only valid for the current pipeline script
 
-The following takes Nginx access-log as an example to illustrate how to write the corresponding grok. The original nginx access log is as follows:
+Take Nginx access-log as an example, the following explains how to write the corresponding grok, the original nginx access log is as follows:
 
 ```log
 127.0.0.1 - - [26/May/2022:20:53:52 +0800] "GET /server_status HTTP/1.1" 404 134 "-" "Go-http-client/1.1"
 ```
 
-Suppose we need to get client_ip, time (request), http_method, http_url, http_version, status_code from the access log, then the grok pattern can be written as:
+Assuming we need to get client_ip, time (request), http_method, http_url, http_version and status_code from the access log, the grok pattern can be written as:
 
 ```python
 # access log
@@ -35,37 +35,37 @@ nullif(upstream, "")
 default_time(time)
 ```
 
-### Grok combination
+### Grok Conbination
 
-The essence of grok is to predefine some regular expressions for text matching extraction, and to name the predefined regular expressions, so that it is convenient to use and nested references to expand countless new patterns. For example, PPL has 3 built-in modes as follows:
+The essence of grok is to predefine some regular expressions for text matching extraction and name the predefined regular expressions, which is convenient to use and expand countless new patterns with nested references. For example, PPL has three built-in modes as follows:
 
 ```python
-_second (?:(?:[0-5]?[0-9]|60)(?:[:.,][0-9]+)?)    # Match seconds, _second is the pattern name
-_minute (?:[0-5][0-9])                            # Match minutes, _minute is the pattern name
-_hour (?:2[0123]|[01]?[0-9])                      # Match hours, _hour is the pattern name
+_second (?:(?:[0-5]?[0-9]|60)(?:[:.,][0-9]+)?)    # matching seconds, _second as the name of the mode
+_minute (?:[0-5][0-9])                            # matching minutes, _minute as the name of the mode
+_hour (?:2[0123]|[01]?[0-9])                      # matching hours, _hour as the name of the mode
 ```
 
-Based on the above three built-in modes, you can extend your own built-in mode and name it `time`:
+Based on the above three built-in patterns, you can extend your own built-in pattern and name it as `time`:
 
 ```python
-# Add time to the file in the pattern directory, this pattern is a global pattern, and time can be referenced anywhere
+# Add time to the file in the pattern directory. This mode is a global mode and time can be referenced anywhere
 time ([^0-9]?)%{hour:hour}:%{minute:minute}(?::%{second:second})([^0-9]?)
 
-# It can also be added to the pipeline file through add_pattern(), then this mode becomes a local mode, only the current pipeline script can use time
+# It can also be added to the pipeline file through add_pattern (), then this mode becomes a local mode and only the current pipeline script can use time
 add_pattern(time, "([^0-9]?)%{HOUR:hour}:%{MINUTE:minute}(?::%{SECOND:second})([^0-9]?)")
 
-# Extract the time field from the original input via grok. Assuming the input is 12:30:59, this extracts to {"hour": 12, "minute": 30, "second": 59}
+# Extract the time field in the original input through grok. Assuming the input is 12:30:59, the {"hour": 12, "minute": 30, "second": 59} is extracted
 grok(_, %{time})
 ```
 
-Precautions:
+Notes:
 
-- If a pattern with the same name appears, the local pattern takes precedence (ie the local pattern overrides the global pattern)
-- In the pipeline script, the `add_pattern` function needs to be called before the `grok` function, otherwise the first data extraction will fail
+- If a pattern with the same name occurs, the local pattern takes precedence (that is, the local pattern overrides the global pattern)
+- In pipeline script, `add_pattern` function needs to be called before `grok`, otherwise the first data fetch would fail
 
-### List of built-in patterns
+### Build-in Pattern List
 
-When we use Grok cutting, we can directly use the built-in Grok Pattern:
+When we use Grok cutting, we could use the built-in Grok Pattern directly:
 
 ```
 USERNAME             : [a-zA-Z0-9._-]+

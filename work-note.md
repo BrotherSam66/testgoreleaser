@@ -127,9 +127,16 @@ pip install --user mkdocs mkdocs-material
 
 mkdocs.yml 文件，参考 demo 写。每个语言一个文件，XXX.zh.md XXX.md XXX.jp.md 就可以。i18n 可以选择正确的显示出来。
 
+## action 发版
+
+【项目】--》【Settings】==》【Secrets】==》【action】==》【New repository secret】==》【Name=BOT_GITHUB_TOKEN】【Secret=我账户下生成的】
+### 打tig
+
+【主要页面】==》【Releases】==》【Draft a new Releases】==>选 旧tag==》v1.1.1【title = V1.1.1 (2022-11-04)】==>发布
 
 
+## GITHUB FLOW
 
-
+https://github.com/selfteaching/the-craft-of-selfteaching/issues/67    
 
 

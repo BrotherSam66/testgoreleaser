@@ -1,76 +1,77 @@
-# Pipeline language
+# Pipeline Processor Language
 
-The following is the Pipeline processor language definition. With the gradual support of different syntaxes, this document will be adjusted, added or deleted to varying degrees. The following is the Pipeline processor language definition. With the gradual support of different syntaxes, this document will be adjusted, added or deleted to varying degrees.
+
+The following is the definition of Pipeline processor language. Being supported by increasing syntax, the document would be adjusted to varying degrees.
 
 ## Identifiers and Keywords
 
-### Identifier
+### Identifiers
 
-Identifiers are used to identify objects and can be used to represent a variable, function, etc. The identifier contains keywords
+Identifiers, used to identify objects, can be used to represent a variable and function. Identifiers contain keywords.
 
-Custom identifiers cannot duplicate keywords in the Pipeline data processor language
+Customized identifiers cannot duplicate keywords of Pipeline data processor language.
 
-Identifiers can consist of numbers (`0-9`), letters (`A-Z a-z`), and underscores (`_`), but the first character cannot be a number and is case sensitive:
+Identifiers consist of numbers (`0-9`), letters (`A-Z a-z`) and underscores (`_`), but the first character cannot be a number and case sensitive:
 
 - `_abc`
 - `abc`
 - `abc1`
 - `abc_1_`
 
-If you need to start with a letter or use backticks outside of the above characters in an identifier:
+If you need to start with a letter or use the above characters in the identifier, you need to use reverse quotation marks:
 
 - `` `1abc` ``
 - `` `@some-variable` ``
-- `` `This is an emoji variable👍` ``
+- `` `an emoticon variable👍` ``
 
-### special identifier
+### Special Identifiers
 
-The special identifier (`_`) represents the external raw input data when the ppl script is triggered, this parameter may be implicitly passed to some functions
+The special identifier（`_`）represents the external raw input data when the ppl script is triggered, and this parameter may be implicitly passed to some functions.
 
-In some functions, `_` will be treated as an alias for `message` for forward compatibility.
+In some functions, `_` is treated as an alias for ` message ` for forward compatibility.
 
 ### Keywords
 
-Keywords are words with special meaning, such as `if`, `elif`, `else`, `for`, `in`, `break`, `continue`, etc.
+Keywords have special meanings, such as `if`, `elif`, `else`, `for`, `in`, `break` and `continue` .
 
-## comments
+## Notes
 
-Use `#` as a line comment character, inline comments are not supported
+With `#` as a line comment character, inline comment is not supported.
 
 ```python
-# This is a line comment
+# this is a line comment
 a = 1 # this is a line comment
 
 """
-This is a (multi-line) string that replaces the comment
+This is a (multi-line) string instead of a comment
 """
 a = 2
 
-"string"
+"alphabetic string"
 a = 3
 ```
 
-## Built-in data types
+## Built-in Data Type
 
-In the Pipeline data processor language, the type of the value of a variable can change dynamically, but each value has its data type, which can be one of the **basic types**, or a **composite type**.
+In the Pipeline data processor language, the type of the value of a variable can change dynamically. But each value has its data type, which can be one of the **primitive types** or a **compound types**.
 
-### basic type
+### Basic Types
 
-#### Integer (int) type
+#### Integer Type
 
-Integer type length is 64bit, signed, currently only supports writing integer literals in decimal, such as `-1`, `0`, `1`, `+19`
+Integers have a type length of 64bits with symbols. Currently, it is only supported to write integer literals in decimal form, such as `-1`, `0`, `1`, `+19`.
 
-#### floating point (float) type
+#### Float Type
 
-The type of floating-point type is 64bit in length and signed. Currently, only floating-point literals can be written in decimal, such as `-1.00001`, `0.0`, `1.0`, `+19.0`
+Float types are 64bit long with symbols, and currently only support writing floating numeric quantities in decimal form, such as `-1.00001`, `0.0`, `1.0`, `+19.0`.
 
-#### boolean type
+#### Boolean Type
 
-There are only two types of boolean literals, `true` and `false`
+Literals in boolean types only include `true` 和 `false`.
 
-#### character (str) string type
+#### String Type
 
-String literals can be written in double or single quotes, and multi-line strings can be written using triple double or triple single quotes to enclose the content
+String literals can be written in double or single quotation marks, and multi-line strings can be written in triple double or triple quotation marks.
 
   * `"hello world"`
 
@@ -88,18 +89,18 @@ String literals can be written in double or single quotes, and multi-line string
     '''
     ```
 
-#### Nil type
-   nil is a special data type that means no value. The literal of this type is `nil`. When a variable is used without assignment, its value is nil
+#### Nil Type
+  Nil is a special data type that means no value. The literal of this type is `nil`,  When a variable is used without assignment, its value is nil.
 
-### Compound Types
+### Compound Type
 
-The map type is different from the list type and the basic type. Multiple variables can point to the same map or list object. When assigning a value, the memory copy of the list or map is not performed, but a reference is made.
+Map type and list type are different from the base type. Multiple variables can point to the same map or list object. When assigning values, they do not make a memory copy of list or map but refer to it.
 
-#### Map type
+#### Map Type
 
-The map type is a key-value structure, only the string type can be used as the key, and the data type of the value is not limited
+Map type is key-value structure, only string type can be used as key, and the data type of value is not limited.
 
-It can read and write elements in the map through index expressions
+It can read and write elements in the map through index expressions.
 
 ```python
 a = {
@@ -109,19 +110,19 @@ a = {
   "def": true
 }
 
-# Since a["1"] is a list object，b just refers to the value of a["1"]
+# as a["1"] is the object of list，b just refers to the value of a["1"].
 b = a["1"]
 
 """
-now a["1"][0] == 1.1
+此时 a["1"][0] == 1.1
 """
 b[0] = 1.1
 ```
 
-#### List type
+#### List Type
 
-The list type can store any number of values of any type in a list
-It can read and write elements in the list through index expressions
+The list type can store any number and any type of value in the list. 
+It can read and write elements in the list through index expressions.
 
 ```python
 a = [1, "2", 3.0, false, nil, {"a": 1}]
@@ -129,67 +130,67 @@ a = [1, "2", 3.0, false, nil, {"a": 1}]
 a = a[0] # a == 1
 ```
 
-## operator
+## Operator
 
-The following operators are currently supported by PPL. The higher the value, the higher the priority.
+The followings are the operators currently supported by PPL. The higher the value, the higher the priority.
 
-|Priority|Symbol|Associativity|Description|
+|Priority|Symbol|Combinability|Description|
 |-|-|-|-|
-| 1 | `=` | right | assignment; named arguments; lowest precedence |
-| 2 | `||` | Left | Logical OR |
-| 3 | `&&` | left | logical AND |
-| 4 | `>=` | left | condition "greater than or equal to" |
-| 4 | `>` | left | condition "greater than" |
-| 4 | `!=` | left | condition "not equal to" |
-| 4 | `==` | left | condition "equals" |
-| 4 | `<=` | left | condition "less than or equal to" |
-| 4 | `<` | left | condition "less than" |
-| 5 | `+` | left | arithmetic "plus" |
-| 5 | `-` | left | arithmetic "subtract" |
-| 6 | `*` | left | arithmetic "multiply" |
-| 6 | `/` | left | arithmetic "divide" |
-| 6 | `%` | left | arithmetic "remainder"|
-| 7 | `[]` | left | use list subscript or map key value|
-| 7 | `()` | None | Can change operator precedence; function call |
+| 1 | `=`  | Right | Assignment; Named parameter; the lowest priority|
+| 2 | `\|\|` | Left | or |
+| 3 | `&&` | Left | and |
+| 4 | `>=` | Left | greater than or equal |
+| 4 | `>`  | Left | greater than |
+| 4 | `!=` | Left | not equal |
+| 4 | `==` | Left | equal |
+| 4 | `<=` | Left | less than or equal |
+| 4 | `<`  | Left | less than |
+| 5 | `+`  | Left | plus |
+| 5 | `-`  | Left | subtract |
+| 6 | `*`  | Left | multiply |
+| 6 | `/`  | Left | divide |
+| 6 | `%`  | Left | remainder|
+| 7 | `[]` | Left | Use the list subscript or the key value of map|
+| 7 | `()` | None | Operator priority can be changed; function call|
 
-## expression
+## Expression
 
-PPL uses the symbol comma `,` as the expression separator, such as parameter passing for calling expressions and the separation of expressions during initialization of map and list
+PPL uses the symbol comma `,` as the expression separator, such as the separation of expressions when passing parameters to invoke expressions and initializing maps and lists.
 
-### call expression
+### Call Expression
 
-The following is a function call to get the number of list elements:
+The following is a function call to take the number of elements in the list:
 
 ```txt
 len([1, 3, "5"])
 ```
 
-### Binary expressions
+### Binary Expression
 
-An assignment expression is a binary expression that has a return value
+An assignment expression belongs to a binary expression with a return value.
 
-````txt
+```txt
 # 0
 2 / 5
 
-# 0.4, promote the type of the left operand to a floating-point number when calculating
+# 0.4，raise the type of left operand to float number during calculation
 2 / 5.0
 
 # true
 1 + 2 * 3 == 7 && 1 <= 2
 
-# b == 3;
-# Due to the right associativity of the `=` operator, a = (b = 3), a == 3
+# b == 3; 
+# as `=` right associativity of operators, a = (b = 3), a == 3
 a = b = 3
-````
+```
 
-### List initializer
+### List Initialization Expression
 
 ```txt
 [1, true, "1", nil]
 ```
 
-### Map initializer
+### Map Initialization Expression
 
 ```txt
 {
@@ -198,9 +199,9 @@ a = b = 3
 }
 ```
 
-### bracket expression
+### Parenthesized Expression
 
-Bracket expressions can change operand operation precedence in binary expressions, but not associativity
+Parenthesized expressions can change the precedence of operands in binary expressions, but they cannot change the combinability.
 
 ```txt
 # 1 + 2 * 3 == 7
@@ -208,9 +209,9 @@ Bracket expressions can change operand operation precedence in binary expression
 (1 + 2) * 3  # == 9
 ```
 
-## statement
+## Statement
 
-All expressions in the PPL can be regarded as value statements. When the expression ends with the statement delimiter `;` or `\n`, it will be regarded as a statement. For example, the following script contains four statements
+All expressions in the PPL can be treated as value statements when expressions are ended by list seperators `;` or `\n` , it would be treated as one statement, such as the following script content containing four statements.
 
 ```go
 len("abc")
@@ -220,7 +221,7 @@ a = 2; a + 2 * 3 % 2
 
 ### Value Statement (Expression Statement)
 
-When an expression is followed by a statement separator, it can be regarded as a value statement. The following are four legal statements
+An expression can be treated as a value statement when it is followed by a statement separator. Here are four legal statements.
 
 ```txt
 a = 1; b = 2;
@@ -228,9 +229,9 @@ d = [1, 2]
 len(d)
 ```
 
-### select statement
+### Select Statement
 
-The PPL supports the `if/elif/else` syntax:
+PPL supports the syntax of  `if/elif/else`.
 
 ```txt
 if condition {
@@ -258,34 +259,34 @@ if condition_1 {
 }
 ```
 
-Like most programming languages, according to whether the conditions of `if/elif` are true, enter the corresponding statement block, if not, enter the else branch.
+Like most programming languages, enter the corresponding statement block according to whether the condition of `if/elif` holds or not, and enter the else branch if none holds.
 
-The current condition can be any expression, as long as its value is one of the built-in data types, the following are the predicate conditions:
+The current condition can be any expression as long as its value is one of the built-in data types. Here are the criteria:
 
-* When the condition is a value of type `int`, it is `0` then the condition is `false`, otherwise it is `true`
+* When the condition is `int` type value, if it is `0` the condition is `false`, otherwise `true`
 
-* When the condition is a value of type `float`, it is `0.0` then the condition is `false`, otherwise it is `true`
+* When the condition is `float` type value, if it is `0.0` the condition is `false`, otherwise `true`
 
-* When the condition is a value of type `string`, it is an empty string `""` then the condition is `false`, otherwise it is `true`
+* When the condition is `string` type value, it is an empty string `""` the condition is `false`, otherwise `true`
 
-* When the condition is a value of type `bool`, the condition is the current value
+* When the condition is `bool` type value, the condition is the current value
 
-* When the condition is a value of type `nil`, the condition is `false`
+* When the condition is `nil` type value, the condition is `false`
 
-* When the condition is a value of type `map`, its length is 0 and the condition is `false`, otherwise it is `true`
+* When the condition is `map` type value, the length is 0, and the condition is `false`, otherwise `true`
 
-* When the condition is a value of type `list`, its length is 0 and the condition is `false`, otherwise it is `true`
+* When the condition is `list` type value, the length is 0, and the condition is `false`, otherwise `true`
 
-### loop statement
+### Loop Statement
 
-PPL supports `for` statement and `for in` statement
+PPL supports the syntax of `for` and `for in` .
 
-The following are two statements that are only allowed in loop blocks:
+The following are two statements that are only allowed in loop statement blocks:
 
-- `cotinue` statement, do not execute subsequent statements, continue to start the next loop
-- `break` statement, which ends the loop
+- `cotinue` statement, no further statements are executed, and the next loop continues
+- `break` statement, loop ends
 
-Use of `for` statement may cause infinite loop, should be used with caution, or use `for in` statement instead
+The use of `for` statement can cause an infinite loop and should be used with caution, or use the statement `for in`  instead when possible.
 
 ```txt
 for init-expr; condition; loop-expr {
@@ -299,9 +300,9 @@ for varb_name in map_value/list_value/string_value  {
 }
 ```
 
-Example of use:
+Examples:
 
-1. Use `for` to execute 10 loops
+1. Use  `for` to run 10 loops.
 
 ```txt
 for a = 0; a < 10; a = a + 1 {
@@ -309,7 +310,7 @@ for a = 0; a < 10; a = a + 1 {
 }
 ```
 
-2. Use `for in` to iterate over all elements of a list
+2. Using `for in` traverses all elements of a list.
 
 ```txt
 b = "2"
@@ -323,7 +324,7 @@ for a in ["1", "a" ,"2"] {
 # b == "21a"
 ```
 
-3. Use `for in` to iterate over all the keys of the map
+3. Using `for in` traverses all the keys of the map.
 
 ```txt
 d = 0
@@ -333,7 +334,7 @@ for x in map_a {
 }
 ```
 
-4. Use `for in` to iterate over all characters of string
+4. Using `for in` traverses all characters of string.
 
 ```txt
 s = ""
