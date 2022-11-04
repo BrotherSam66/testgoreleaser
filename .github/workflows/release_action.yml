@@ -35,16 +35,14 @@ jobs:
         with:
           go-version: 1.18
 
-      # - name: Install coscmd
-      #   run: |
-      #     pip install coscmd
-      #     coscmd config -a $TENCENT_SECRET_ID -s $TENCENT_SECRET_KEY -b $BUCKET_ID -r $BUCKET_REGION --retry 5
-      #     coscmd upload ./scripts/install_hln/install.sh hln/install.sh
-      #   env:
-      #     TENCENT_SECRET_ID: ${{ secrets.TENCENT_SECRET_ID }}
-      #     TENCENT_SECRET_KEY: ${{ secrets.TENCENT_SECRET_KEY }}
-      #     BUCKET_ID: dl-1309519128
-      #     BUCKET_REGION: ap-hongkong
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v1
+      - name: Docker Login
+        uses: docker/login-action@v1
+        with:
+          registry: ghcr.io
+          username: ${{ secrets.DOCKER_USER }}
+          password: ${{ secrets.DOCKER_PASS }}
 
       - name: Run GoReleaser
         uses: goreleaser/goreleaser-action@v2
