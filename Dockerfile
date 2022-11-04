@@ -1,4 +1,4 @@
 FROM scratch
 # FROM alpine
-COPY guanceexample /app
-ENTRYPOINT ["/app"]
+COPY guanceexample /usr/local/bin/app
+ENTRYPOINT ["/usr/local/bin/app"]
